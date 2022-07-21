@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <title>Local Date and Time</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script>
+            let t;
+            let d;
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            setInterval(()=>{
+                x = new Date();
+                d = x.toLocaleDateString(undefined, options);
+                t = x.getHours() + ':' + x.getMinutes() + ':' + x.getSeconds();
+                document.getElementById('disp').innerHTML = t;
+                document.getElementById('disp2').innerHTML = d;
+            },1000)
+
+            setInterval(()=>{
+                let utcDate1 = new Date(Date.UTC(2022, 21, 07, 16, 22, 5));
+                document.getElementById('disp3').innerHTML = utcDate1;
+            },1000)
+        </script>
+        <style>
+            body    {
+                background-image: url("/home/sid/Documents/Online_C_programs/Practice/clocks.jpeg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            #h   {
+                background-color: cadetblue;
+                color: white;
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            #time   {
+                background-color: rgb(184, 179, 231);
+                font-size: 25px;
+                color:white;
+            }
+            #test   {
+                font-style: italic;
+                color:black;
+            }
+            #display    {
+                background-color: rgb(184, 179, 231);
+                font-size: 3em;
+            }
+            #display2   {
+                background-color: rgb(184, 179, 231);
+                font-size: 3em;
+            }
+            .link   {
+                color:white;
+            }
+            .dropdown   {
+                background-color: rgb(3, 26, 68);
+                overflow: hidden;
+                margin: 0px;
+                padding: 0px;
+                list-style-type: none;
+            }
+            .d  {
+                background-color: rgb(11, 4, 78);
+                color: white;
+                border: 3px solid gray;
+                margin: 0px;
+                padding: 6px;
+                display: inline;
+                overflow: hidden;
+                float: left;
+                font-size: 20px;
+            }
+            .d:hover    {
+                background-color: gray;
+                color:black;
+            }
+            .styling    {
+                background-color: rgb(248, 252, 255);
+                border: 1px solid maroon;
+                margin: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="h">Welcome to local and global dates and times!!</h1>
+        <div class="dropdown">
+            <div class="d"><a class="link" href="#time">Home</a></div>
+            <div class="d"><a class="link" href="#display">Local Time</a></div>
+            <div class="d"><a href="/home/sid/Documents/Online_C_programs/Practice/clock2.html">About</a></div>
+        </div>
+        <div id="time">
+            <p>
+                Time is a part of the measuring system used to sequence events, to compare the durations of events and the test123 intervals between them, and to quantify rates of change such as the motions of objects.<br> The temporal position of events with respect to the transitory present is continually changing; events happen, then are located further and further in the past.<br><br> 
+                Time has been a major subject of religion, philosophy, and science, but defining it in a non-controversial manner applicable to all fields of study has consistently eluded the greatest scholars.<br> 
+                <strong id="test">A simple definition states that "time is what clocks measure". Test.</strong><br>
+            </p>
+            <p>
+                Time is one of the seven fundamental physical quantities in the International System of Units. Time is used to define other quantities — such as velocity — so defining time in terms of such quantities would result in circularity of definition.[2] An operational definition of time, wherein one says that observing a certain number of repetitions of one or another standard cyclical event (such as the passage of a free-swinging pendulum) constitutes one standard unit such as the second, is highly useful in the conduct of both advanced experiments and everyday affairs of life.<br> 
+                The operational definition leaves aside the question whether there is something called time, apart from the counting activity just mentioned, that flows and that can be measured. Investigations of a single continuum called spacetime bring questions about space into questions about time, questions that have their roots in the works of early students of natural philosophy.
+            </p>
+        </div>
+        <div id="display">
+            <p class="styling">CURRENT TIME: <span id="disp"></span></p>
+            <p class="styling">TODAY'S DATE: <span id="disp2"></span></p>
+        </div>
+    </body>
+</html>
