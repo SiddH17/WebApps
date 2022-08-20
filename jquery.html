@@ -1,0 +1,229 @@
+<html>
+
+<head>
+    <title>jQuery page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        li {
+            color: white;
+            font-size: 1.2em;
+        }
+
+        p {
+            color: white;
+            font-size: 1.2em;
+        }
+
+        b {
+            color: red;
+        }
+
+        #vid {
+            position: fixed;
+            right: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        #invalid {
+            color: red;
+            font-size: 1.1em;
+        }
+
+        .converter {
+            color: blue;
+        }
+
+        .division {
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            padding: 20px;
+            color: black;
+            top: 0;
+            width: 100%;
+        }
+
+        .options {
+            color: white;
+        }
+
+        .inputs {
+            color: black;
+        }
+
+        .division1 {
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            padding: 20px;
+            color: black;
+            top: 400;
+            width: 100%;
+        }
+
+        .texts {
+            color: black;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('li').click(function () {
+                $(this).hide();
+            });
+            $('.alert').click(function () {
+                $(this).mousedown();
+                alert("You clicked on the sentence!");
+            });
+            $('#fadeout').click(function () {
+                $(this).fadeOut(2000);
+            });
+            $('#fadein').hide();
+            $('#fin').click(function () {
+                $('#fadein').fadeIn(2000);
+            });
+            $('#fade').click(function () {
+                $('#fadetoggle').fadeToggle(2000);
+            });
+        });
+        $(document).ready(function () {
+            $('.inches').hide();
+            $('.pounds').hide();
+            $('.celsius').hide();
+            $('.cm').hide();
+            $('.kg').hide();
+            $('.farenheit').hide();
+            $('#btn1').hide();
+            $('#btn2').hide();
+            $('#btn3').hide();
+            $('#reset').hide();
+        });
+    </script>
+    <script>
+        function showfn() {
+            var x;
+            x = document.getElementById("showbtn").value;
+            if (x == document.getElementById("measurement").value) {
+                $('.pounds').hide();
+                $('.kg').hide();
+                $('#btn2').hide();
+                $('#btn3').hide();
+                $('.celsius').hide();
+                $('.farenheit').hide();
+
+                $('.inches').show();
+                $('.cm').show();
+                $('#btn1').show();
+                $('#reset').show();
+            }
+            else if (x == document.getElementById("mass").value) {
+                $('.inches').hide();
+                $('.cm').hide();
+                $('#btn1').hide();
+                $('#btn3').hide();
+                $('.celsius').hide();
+                $('.farenheit').hide();
+
+                $('.pounds').show();
+                $('.kg').show();
+                $('#btn2').show();
+                $('#reset').show();
+            }
+            else if (x == document.getElementById("temperature").value) {
+                $('.inches').hide();
+                $('.cm').hide();
+                $('#btn1').hide();
+                $('#btn2').hide();
+                $('.pounds').hide();
+                $('.kg').hide();
+
+                $('.celsius').show();
+                $('.farenheit').show();
+                $('#btn3').show();
+                $('#reset').show();
+            }
+            else {
+                document.getElementById("invalid").innerHTML = "*Please select an appropriate field."
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <video autoplay muted loop id="vid">
+        <source src="web.mp4" type="video/mp4">
+    </video>
+    <div class="division">
+        <h2 class="converter">Convert any of the given units of measurement down below:</h2>
+        <select id="showbtn">
+            <option value="select">---Select---</option>
+            <option id="measurement" value="measurement">inches to cm</option>
+            <option id="mass" value="mass">pounds to kilograms</option>
+            <option id="temperature" value="temperature">celsius to farenheit</option>
+        </select><br><br>
+        <button type="submit" value="select" onclick="showfn()" class="btn btn-primary">Select</button><br>
+        <p id="invalid"></p>
+        <div class="options">
+            <label for="inches" class="inches">Inches:</label><br>
+            <input type="number" class="inches texts" id="num1">
+            <button type="submit" onclick="convert1()" class="btn btn-success" id="btn1">Calculate</button>
+            <p class="cm">Centimetres: <span class="cm" id="centi">0</span></p>
+        </div>
+        <div class="options">
+            <label for="pounds" class="pounds">Pounds:</label><br>
+            <input type="number" class="pounds texts" id="num2">
+            <button type="submit" onclick="convert2()" class="btn btn-success" id="btn2">Calculate</button>
+            <p class="kg">Kilograms: <span class="kg" id="kilo">0</span></p>
+        </div>
+        <div class="options">
+            <label for="celsius" class="celsius">Celsius:</label><br>
+            <input type="number" class="celsius texts" id="num3">
+            <button type="submit" onclick="convert3()" class="btn btn-success" id="btn3">Calculate</button>
+            <p class="farenheit">Farenheit: <span class="farenheit" id="fr">0</span></p>
+        </div>
+    </div>
+    <div class="division1">
+        <h2 class="converter">Meanwhile, here's a small and fun exercise using jQuery:</h2>
+        <ul>
+            <li>Click on this sentence to <b>hide it.</b></li>
+            <li>Click on this sentence to <b>perform the same function again.</b></li>
+        </ul>
+        <h2 class="converter">Here's another fun exercise but using another function:</h2>
+        <p class="alert">Click on this sentence to receive an <b>alert.</b></p>
+        <p class="alert">Click on this second sentence to <b>perform the same function once again.</b></p>
+        <h2 class="converter">Now here's to fading in and out of this webpage:</h2>
+        <p id="fadeout">Click on this sentence to <b>fade out.</b></p>
+        <p id="fadein">Click on the button below to <b>fade in.</b></p>
+        <button id="fin" class="btn btn-info">Fade in sentence</button><br><br>
+        <p id="fadetoggle">Click on the button below to <b>do both of the above functions.</b></p>
+        <button id="fade" class="btn btn-info">Fade Toggle</button>
+    </div>
+    <script>
+        function convert1() {
+            let a;
+            a = document.getElementById("num1").value;
+            a = a * 2.54;
+            document.getElementById("centi").innerHTML = a;
+        }
+        function convert2() {
+            let b;
+            b = document.getElementById("num2").value;
+            b = b * 0.45359237;
+            document.getElementById("kilo").innerHTML = b;
+        }
+        function convert3() {
+            let c;
+            c = document.getElementById("num3").value;
+            c = (c * 1.8) + 32;
+            document.getElementById("fr").innerHTML = c;
+        }
+    </script>
+</body>
+
+</html>
